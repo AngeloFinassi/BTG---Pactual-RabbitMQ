@@ -97,9 +97,3 @@ Para testar, publique o payload acima em **Queues → btg-pactual-order-created 
 - [ ] Observabilidade com Spring Actuator + Micrometer
 - [ ] Testes de integração com Testcontainers
 - [ ] Dockerizar a aplicação
-
----
-
-## 👨‍💻 Autor
-
-**[seu nome]** · [LinkedIn](https://linkedin.com/in/seuperfil) · [GitHub](https://github.com/seuusuario)
