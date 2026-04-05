@@ -15,56 +15,6 @@ A motivação principal foi praticar conceitos de mensageria com RabbitMQ, persi
 ✅ Resposta padronizada com paginação e sumário financeiro
 ✅ Ambiente local completo com Docker Compose (MongoDB + RabbitMQ)
 
-🏗️ Arquitetura
-[Producer externo]
-       │
-       │  publica evento JSON
-       ▼
-  [ RabbitMQ ]
-  Queue: btg-pactual-order-created
-       │
-       │  OrderCreatedListener consome
-       ▼
-  [ OrderService ]
-  calcula total, monta entidade
-       │
-       ▼
-  [ MongoDB ]
-  collection: tb_orders
-       │
-       ▼
-  [ REST API ]
-  GET /customers/{id}/orders
-
-📁 Estrutura do Projeto
-src/main/java/tech/buildrun/btgpactual/orderms/
-│
-├── config/
-│   └── RabbitMqConfig.java          ← declaração da fila
-│
-├── controller/
-│   ├── OrderController.java         ← endpoint REST
-│   └── dto/
-│       ├── ApiResponse.java
-│       ├── OrderResponse.java
-│       └── PaginationResponse.java
-│
-├── entity/
-│   ├── OrderEntity.java             ← documento MongoDB
-│   └── OrderItem.java
-│
-├── listener/
-│   ├── OrderCreatedListener.java    ← consumidor RabbitMQ
-│   └── dto/
-│       ├── OrderCreatedEvent.java
-│       └── OrderItemEvent.java
-│
-├── repository/
-│   └── OrderRepository.java
-│
-└── service/
-    └── OrderService.java            ← regras de negócio + agregação
-
 🔌 Endpoint disponível
 GET /customers/{customerId}/orders
 Lista todos os pedidos de um cliente com paginação e total gasto.
